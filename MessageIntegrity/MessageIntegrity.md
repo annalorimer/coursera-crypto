@@ -12,7 +12,7 @@
  - V(k,m,t) validates the `tag-message pair`
  - K := Keyspace, M := Messagespace, T := Tagspace
 
- ![Basic MAC](/MessageIntegrity/BasicMac.png)
+ ![Basic MAC](https://github.com/annalorimer/coursera-crypto/blob/master/MessageIntegrity/BasicMAC.png)
 
 - **An attacker should not be able to produce a valid tag or valid tag-message pair**
 
@@ -22,7 +22,7 @@
  3. Once the adversary has received _Q_ tag-message pairs, they attempt an existential forgery by submitting a tag-message pair to V
  4. We say the adversary wins the game if V outputs yes and the tag-message pair submitted by the adversary is fresh
 
-![MAC Game](/MessageIntegrity/MACGame.png)
+![MAC Game](https://github.com/annalorimer/coursera-crypto/blob/master/MessageIntegrity/MACgame.png)
 
 - **A MAC I = (S,V) is secure if for all efficient adversaries ADV<sub>MAC</sub>[A,I] = Pr[Challenger Outputs 1] is negligible**
  - ex. I = (S,V) where S(k,m) is always 5-bits is not secure because probability of the adversary guess the tag is not negligible
