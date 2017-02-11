@@ -65,6 +65,12 @@ ex. PRF F: K x X -> Y and I<sub>F</sub> = (S,V) defined as S(k,m) = F(k,m) and V
 > Consequence:
 > If (S,V) is a MAC baed on a secure PRF that outputs n-bit tags, the truncated MAC outputting w-bit tags is secure as long as 0.5<sup>w</sup> is still negligible.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## ECBC-MAC
 
 - Uses a PRF that takes messages in X = {0,1}<sup>n</sup> and outputs messages in the same set X
@@ -89,9 +95,6 @@ ex. PRF F: K x X -> Y and I<sub>F</sub> = (S,V) defined as S(k,m) = F(k,m) and V
 
  <br>
  <br>
- <br>
- <br>
- <br>
 
 > **Theorem**
 >
@@ -108,6 +111,12 @@ ex. PRF F: K x X -> Y and I<sub>F</sub> = (S,V) defined as S(k,m) = F(k,m) and V
 > NMAC is secure as long as q << |K|<sup>1/2</sup>
 >
 > This means that the key must be changed after a certain amount of time because the Birthday Paradox states that there will be a collision and then then the construction is vulnerable.
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## MAC Padding
 
@@ -129,4 +138,4 @@ ex. ISO padding is with 100...00, adding a dummy block if needed.
 
 - Federal standard
 - Variant of CBC-MAC where k = (k, k<sub>1</sub>, k<sub>2</sub>)
-- No final encryption step and no dummy blocks 
+- No final encryption step and no dummy blocks
