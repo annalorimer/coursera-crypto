@@ -12,7 +12,7 @@
  - V(k,m,t) validates the `tag-message pair`
  - K := Keyspace, M := Messagespace, T := Tagspace
 
- ![Basic MAC](MessageIntegrity/BasicMac.png)
+ ![Basic MAC](https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg)
 
 - **An attacker should not be able to produce a valid tag or valid tag-message pair**
 
