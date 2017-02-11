@@ -5,7 +5,14 @@
 - **Goal** Integrity, but no confidentiality.
  - ex. Windows OS files. We need to know that they're legit, but they don't need to be confidential
 
-## Message Authentication Code (MAC)
+- [Message Authentication Code](#message-authentication-code)
+ - [Attacks](#attacks)
+- [ECBC-MAC](#ecbc-mac)
+- [NMAC](#nmac)
+- [MAC Padding](#mac-padding)
+
+
+## Message Authentication Code
 
 - A `MAC I = (S,V) defined over (K,M,T)` is a pair of algorithms S and V.
  - S(k,m) outputs a `tag`
