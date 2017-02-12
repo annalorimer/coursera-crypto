@@ -5,11 +5,18 @@
 - **Goal** Integrity, but no confidentiality.
  - ex. Windows OS files. We need to know that they're legit, but they don't need to be confidential
 
+<br>
+<br>
+<br>
+
 - [Message Authentication Code](#message-authentication-code)
  - [Attacks](#attacks)
 - [ECBC-MAC](#ecbc-mac)
 - [NMAC](#nmac)
 - [MAC Padding](#mac-padding)
+- [CMAC](#cmac)
+- [PMAC](#pmac)
+- [One Time MAC](#one-time-mac)
 
 
 ## Message Authentication Code
@@ -143,6 +150,60 @@ ex. ISO padding is with 100...00, adding a dummy block if needed.
 
 ## CMAC
 
-- Federal standard
+- Using a randomized padding function we can avoid ever having to use a dummy block
+
 - Variant of CBC-MAC where k = (k, k<sub>1</sub>, k<sub>2</sub>)
-- No final encryption step and no dummy blocks
+ - k is used in the standard CBC-MAC algorithm
+ - k<sub>1</sub> and k<sub>2</sub> are used in the padding scheme at the end and are derived from k
+
+- If the message length is not a multiple of a block length then ISO padding is appended, but no dummy block is added
+ - We also XOR the last block with a secret key k<sub>1</sub>
+
+- If the message length is a multiple of the block length we don't append anything
+ - We XOR it is k<sub>2</sub>
+
+- XOR-ing the output of the cascade function with either k<sub>1</sub> or k<sub>2</sub> makes it impossible to apply an extension attack!
+ - Because the adversary doesn't know the last block that went in to the function
+
+
+## PMAC
+
+- All the MACs we've seen so far are not parallelizable
+ - So we can't take advantage of multiple cores to compute them
+
+- PMAC is a parallelizable MAC!
+
+![ISO Padding](https://github.com/annalorimer/coursera-crypto/blob/master/MessageIntegrity/PMAC.png)
+
+- P is a masking function that forces order on the blocks
+ - If the blocks were interchangable and existentional forgery would be possible
+
+- PMAC is `incremental`
+ - You don't necessarily need to recompute every block for a new message
+
+> **Theorem**
+>
+> For any L > 0 if F is secure over (K, X, X) then F<sub>PMAC</sub> is a secure PRF over (k, X<sup>>=L</sup>, X) and for every efficient q-query PRF adversary A attacking F<sub>PMAC</sub> there exists and efficient adversary B such that
+>
+> ADV<sub>PRF</sub>[A, F<sub>PMAC</sub>] <= ADV<sub>PRF</sub> + 2 q<sup>2</sup> L<sup>2</sup>/|X|
+>
+> Consequence:
+>
+> PMAC is secure as long as q << |X|<sup>1/2</sup>
+
+## One Time MAC
+
+- Analog of one time pad
+
+- Only used for the integrity of one message
+ - So Eve can only see one tag-message pair => secure against any Eve
+
+ex. Let q be a large prime.
+
+k = (k, a) in {1, ... , q}<sup>2</sup>
+
+msg = (m[1], ... , m[L])
+
+S(key, msg) = P<sub>msg</sub>(k) + q (mod q)
+
+P<sub>msg</sub>(k) = m[L]x<sup>L</sup> + ... + m[1]x
