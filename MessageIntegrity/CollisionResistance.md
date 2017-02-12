@@ -1,6 +1,6 @@
 # Collision Resistance
 
--[Birthday Attack](#birthday-attack)
+- [Birthday Attack](#birthday-attack)
  - [The Birthday Paradox](#the-birthday-paradox)
 
 <br>
@@ -12,7 +12,7 @@
 - H is `collision resistant` if for all explicit efficient algorithms A ADV<sub>CR</sub>[A, H] = Pr[A outputs a collision for H] is negligible.
 
 - Let I = (S,V) be a MAC for short messages over (K, M, T) and let H: M<sup>BIG</sup> -> M.
- - Define `I<sup>BIG</sup> = (S<sup>BIG<sup>, V<sup>BIG</sup>)` over (K, M<sup>BIG</sup>, T) as S<sup>BIG</sup>(k, m) = S(k, H(m)) and V<sup>BIG</sup>(k, m ,t) = V(k, H(m), t)
+ - Define I<sup>BIG</sup> = (S<sup>BIG<sup>, V<sup>BIG</sup>) over (K, M<sup>BIG</sup>, T) as S<sup>BIG</sup>(k, m) = S(k, H(m)) and V<sup>BIG</sup>(k, m ,t) = V(k, H(m), t)
 
 - So H can be sued to MAC large messages!
 
@@ -21,7 +21,7 @@
 > If I is a secure MAC and H is a collision resistant hash function, then I<sup>BIG</sup> is a secure MAC
 
 - Collision resistance is necessary for security
- - If S<sup>BIF</sup> is insecure under chosen message attacks if H is not collision resistant
+ - If S<sup>BIG</sup> is insecure under chosen message attacks if H is not collision resistant
 
 ## Birthday Attack
 
@@ -36,4 +36,5 @@
 
 > **Theorem**
 >
-> Let r<sub>1</sub>, ... , r<sub>n</sub> be in {1, ... , B} be independent and identically distributed. When n = 1.2 B<sup>1/2</sup> then Pr[There exists i!=j: r<sub>i</sub> = r<sub>j</sub>]
+> Let r<sub>1</sub>, ... , r<sub>n</sub> be in {1, ... , B} be independent and identically distributed. When n = 1.2 B<sup>1/2</sup> then
+> Pr[There exists i!=j: r<sub>i</sub> = r<sub>j</sub>]
