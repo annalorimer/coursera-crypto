@@ -17,6 +17,7 @@
 - [CMAC](#cmac)
 - [PMAC](#pmac)
 - [One Time MAC](#one-time-mac)
+- [Carter-Wegman MAC](#carter-Wegman-mac)
 
 
 ## Message Authentication Code
@@ -129,8 +130,6 @@ ex. PRF F: K x X -> Y and I<sub>F</sub> = (S,V) defined as S(k,m) = F(k,m) and V
 <br>
 <br>
 <br>
-<br>
-<br>
 
 ## MAC Padding
 
@@ -207,3 +206,14 @@ msg = (m[1], ... , m[L])
 S(key, msg) = P<sub>msg</sub>(k) + q (mod q)
 
 P<sub>msg</sub>(k) = m[L]x<sup>L</sup> + ... + m[1]x
+
+## Carter-Wegman MAC
+
+- It'd be great if we could make one time MACs many time MACs ...
+
+- Let (S,V) be a secure one-time MAC over (K, M, {0,1}<sup>n</sup>) and let F: K<sub>F</sub> x {0,1}<sup>n</sup> -> {0,1}<sup>n</sup> be a secure PRF.
+ - `Carter-Wegman MAC` is defined as CW((k<sub>1</sub>, k<sub>2</sub>), m) = (r, F(k<sub>1</sub>), r) XOR S(k<sub>2</sub>, m) for random r <- {0,1}<sup>n</sup>
+
+> **Theorem**
+>
+> If (S,V) is a secure one-time MAC and F a secure PRF then CW is a secure MAC outputting tags in {0,1}<sup>n</sup>
