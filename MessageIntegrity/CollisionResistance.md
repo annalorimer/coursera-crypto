@@ -12,9 +12,9 @@
 - H is `collision resistant` if for all explicit efficient algorithms A ADV<sub>CR</sub>[A, H] = Pr[A outputs a collision for H] is negligible.
 
 - Let I = (S,V) be a MAC for short messages over (K, M, T) and let H: M<sup>BIG</sup> -> M.
- - Define I<sup>BIG</sup> = (S<sup>BIG<sup>, V<sup>BIG</sup>) over (K, M<sup>BIG</sup>, T) as S<sup>BIG</sup>(k, m) = S(k, H(m)) and V<sup>BIG</sup>(k, m ,t) = V(k, H(m), t)
+ - Define I<sup>BIG</sup> = (S<sup>BIG</sup>, V<sup>BIG</sup>) over (K, M<sup>BIG</sup>, T) as S<sup>BIG</sup>(k, m) = S(k, H(m)) and V<sup>BIG</sup>(k, m ,t) = V(k, H(m), t)
 
-- So H can be sued to MAC large messages!
+- So H can be used to MAC large messages!
 
 > **Theorem**
 >
