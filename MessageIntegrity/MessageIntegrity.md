@@ -7,7 +7,6 @@
 
 <br>
 <br>
-<br>
 
 - [Message Authentication Code](#message-authentication-code)
  - [Attacks](#attacks)
